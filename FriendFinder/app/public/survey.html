@@ -6,6 +6,26 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
-        <h1>Friend Finder Survey Page</h1>
+        <div class="container">
+            <h1>Survey Questions</h1>
+            <hr class="my-4">
+            <h2>Your Info</h2>
+            <form>
+                <div class="form-group">
+                    <label for="nameInput">Your Name (Required)</label>
+                    <input type="text" class="form-control" id="nameInput" placeholder="John Smith">
+                </div>
+                <div class="form-group">
+                    <label for="questionOne">Do you consider yourself a night owl?</label>
+                    <select class="form-control" id="questionOne">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </form>
+        </div>
     </body>
 </html>
