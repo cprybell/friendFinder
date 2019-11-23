@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>Friend Finder</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery.js"></script>
     </head>
     <body>
         <div class="container">
@@ -16,16 +17,158 @@
                     <input type="text" class="form-control" id="nameInput" placeholder="John Smith">
                 </div>
                 <div class="form-group">
+                    <label for="photoInput">Link to Profile Picture (Required)</label>
+                    <input type="text" class="form-control" id="photoInput" placeholder="https://icon-library.net/images/default-user-icon/default-user-icon-11.jpg">
+                </div>
+                <div class="form-group">
                     <label for="questionOne">Do you consider yourself a night owl?</label>
                     <select class="form-control" id="questionOne">
-                        <option>1</option>
+                        <option selected>Choose..</option>
+                        <option>1 (Strongly Disagree)</option>
                         <option>2</option>
                         <option>3</option>
                         <option>4</option>
-                        <option>5</option>
+                        <option>5 (Strongly Agree)</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="questionTwo">Do you consider yourself and outdoor person?</label>
+                    <select class="form-control" id="questionTwo">
+                        <option selected>Choose..</option>
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="questionThree">Do you like spicy food?</label>
+                    <select class="form-control" id="questionThree">
+                        <option selected>Choose..</option>
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="questionFour">Do you like to travel?</label>
+                    <select class="form-control" id="questionFour">
+                        <option selected>Choose..</option>
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="questionFive">Do you like coffee?</label>
+                    <select class="form-control" id="questionFive">
+                        <option selected>Choose..</option>
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="questionSix">Do you like sports?</label>
+                    <select class="form-control" id="questionSix">
+                        <option selected>Choose..</option>
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="questionSeven">Do you have a sweet tooth?</label>
+                    <select class="form-control" id="questionSeven">
+                        <option selected>Choose..</option>
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="questionEight">Do you like watching movies?</label>
+                    <select class="form-control" id="questionEight">
+                        <option selected>Choose..</option>
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="questionNine">Do you like skiing/snowboarding?</label>
+                    <select class="form-control" id="questionNine">
+                        <option selected>Choose..</option>
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="questionTen">Do you like intellectual conversations?</label>
+                    <select class="form-control" id="questionTen">
+                        <option selected>Choose..</option>
+                        <option>1 (Strongly Disagree)</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5 (Strongly Agree)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" id="submit">Submit Survey</button>
             </form>
+            <hr class="my-4">
+            <a href="/api/friends">API Friends List</a>
+            | 
+            <a href="https://github.com/cprybell/friendFinder">GitHub Repo</a>
         </div>
+        <script type="text/javascript">
+            $("#submit").on("click", function(event) {
+                event.preventDefault();
+                var newFriend = {
+                    name : $("#nameInput").val().trim().toLowerCase(),
+                    photo : $("#photoInput").val().trim(),
+                    scores : [
+                        parseInt($("#questionOne").val()),
+                        parseInt($("#questionTwo").val()),
+                        parseInt($("#questionThree").val()),
+                        parseInt($("#questionFour").val()),
+                        parseInt($("#questionFive").val()),
+                        parseInt($("#questionSix").val()),
+                        parseInt($("#questionSeven").val()),
+                        parseInt($("#questionEight").val()),
+                        parseInt($("#questionNine").val()),
+                        parseInt($("#questionTen").val()),
+                    ]
+                }
+                console.log(newFriend);
+
+                var currentURL = window.location.origin;
+
+                $.post(currentURL + "/api/friends", newFriend, function(data) {
+                    if (data === true) {
+                        alert("Yes Friend Added");
+                    }
+                    if (data === false) {
+                        alert("Please fill out all data fields correctly!");
+                    }
+                })
+            })
+        </script>
     </body>
 </html>
